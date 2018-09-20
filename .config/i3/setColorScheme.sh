@@ -1,12 +1,11 @@
 img="${HOME}/Pictures/Wallpapers/"
-walSelectedImg="`cat ${HOME}/.cache/wal`"
+walSelectedImg="`cat ${HOME}/.cache/wal/wal`"
 walColorFile="${HOME}/.cache/wal/colors"
 pyProcessColorFile=".config/i3/configColors.py"
+colorsFile="${HOME}/.config/i3/colors"
 colors=()
 
 wal -i "$img"
-feh --bg-scale "${walSelectedImg}"
-
 while read -r line || [[ -n "$line" ]]; do
 	colors+=("$line")
 done < "$walColorFile"
@@ -14,7 +13,13 @@ done < "$walColorFile"
 colors=( $(python "$HOME/$pyProcessColorFile" ${colors[*]}) )
 colorStr=""
 
+if [ ! -f $colorsFile ]; then
+	touch $colorsFile
+fi
+echo "" > $colorsFile
+
 for c in "${!colors[@]}"; do
+	echo -e "${colors[$c]}" >> $colorsFile  
 	entry="*color${c}:\t${colors[$c]}\n"
 	entry="${entry}*.color${c}:\t${colors[$c]}\n"
 	if [[ $colorStr != "" ]]; then
@@ -25,6 +30,10 @@ for c in "${!colors[@]}"; do
 done
 colorStr="${colorStr}\n*color${#colors[@]}:\t#333333\n"
 colorStr="${colorStr}*.color${#colors[@]}:\t#333333"
+
+if [ ! -f "${HOME}/.Xresources" ]; then
+	touch "${HOME}/.Xresources"
+fi
 echo -e "$colorStr" > ~/.Xresources
 
 termStr="[options]"
