@@ -34,7 +34,7 @@ POWERLEVEL9K_LINUX_ARCH_ICON=
 POWERLEVEL9K_TIME_ICON=
 
 # Antigen Config
-source $HOME/antigen.zsh
+source $HOME/.config/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle robbyrussell/oh-my-zsh plugins/archlinux
@@ -49,9 +49,48 @@ antigen apply
 #		MACROS..		#
 #########################################
 
+function wifi()	{
+	cmd=""
+	if [ $# = 0 ]; then 
+		# Print help menu
+		echo -e "Short-hand/more accessable wifi menu"
+		echo -e "Available options:"
+		echo -e "\ton/off  --> turns wifi or off"
+		echo -e "\tlist    --> lists wifi endpoints"
+		echo -e "\tconnect --> connect to wifi endpoint"
+		echo -e "\n\n Enter remaining args...\n"
+		read cmd
+	fi
+	case $cmd in
+		"on") 
+			echo -e "Turning wifi on"
+			nmcli networking on
+			;;
+		"off")
+			echo -e "Turning wifi off"
+			nmcli networking off
+			;;
+		"list")
+			echo -e "Available endpoints"
+			nmcli device wifi
+			;;
+		"connect")
+			echo -e "Additional credentials needed."
+			echo -e "Enter the network name"
+			read name
+			echo -e "Enter network password"
+			read passwd
+
+			nmcli device wifi connect $name password $passwd
+			;;
+		*) echo "What is this?"
+			;;
+	esac
+			
+}
 
 function transmissionctrl()	{
-	if [ $1 = "launch" ]; then
+	if [ $1 = "launch"  ] || [ $1 = "start" ]; then
 		transmission-daemon \
 			--auth \
 			--username arch \
@@ -97,4 +136,5 @@ function extract {
         fi
     fi
 }
-
+alias install='trin'
+alias remove='trre'
