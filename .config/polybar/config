@@ -109,12 +109,15 @@ menu-0-0-exec = "systemctl poweroff"
 menu-0-1 = reboot
 menu-0-1-exec = "systemctl reboot"
 
+menu-0-2 = lock
+menu-0-2-exec = "exit"
+
 [module/wireless-network]
 type = internal/network
 interface = wlp1s0
 
-format-connected = <label-connected>(<ramp-signal>)
-label-connected = "%essid%" 
+format-connected = <label-connected> (<ramp-signal>)
+label-connected = " %essid%" 
 format-connected-underline = ${colors.color5}
 label-connected-foreground = ${colors.color6}
 
@@ -127,7 +130,7 @@ ramp-signal-4 = "GREAT"
 
 [module/volume]
 type = internal/pulseaudio
-use-ui-max = true
+use-ui-max = false
 interval = 5
 
 format-volume = <label-volume> <bar-volume>

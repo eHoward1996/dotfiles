@@ -100,7 +100,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec i3-msg exit
 # lock i3 (no log out)
 bindsym $mod+Shift+l exec ~/.config/i3/lockScreen.sh
 
@@ -112,10 +112,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 1 ppt
+        bindsym Down resize grow height 10 px or 1 ppt
+        bindsym Up resize shrink height 10 px or 1 ppt
+        bindsym Right resize grow width 10 px or 1 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -128,10 +128,10 @@ bindsym $mod+r mode "resize"
 mode "move" {
         # These bindings trigger as soon as you enter the move mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # Pressing left will move the window left.
+        # Pressing right will move the window right.
+        # Pressing up will move the window up.
+        # Pressing down will move the window down.
         bindsym Left move left 10 px
         bindsym Down move down 10 px
         bindsym Up move up 10 px

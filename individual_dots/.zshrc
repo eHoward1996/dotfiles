@@ -51,16 +51,16 @@ antigen apply
 
 function wifi()	{
 	cmd=""
-	if [ $# = 0 ]; then 
-		# Print help menu
-		echo -e "Short-hand/more accessable wifi menu"
-		echo -e "Available options:"
-		echo -e "\ton/off  --> turns wifi or off"
-		echo -e "\tlist    --> lists wifi endpoints"
-		echo -e "\tconnect --> connect to wifi endpoint"
-		echo -e "\n\n Enter remaining args...\n"
-		read cmd
-	fi
+	
+	# Print commands
+	echo -e "Short-hand/more accessible wifi menu"
+	echo -e "Available options:"
+	echo -e "\ton/off  --> turns wifi on or off"
+	echo -e "\tlist    --> lists wifi endpoints"
+	echo -e "\tconnect --> connect to wifi endpoint"
+	echo -e "\nEnter remaining args...\n"
+	read cmd
+	
 	case $cmd in
 		"on") 
 			echo -e "Turning wifi on"
@@ -97,11 +97,11 @@ function transmissionctrl()	{
 			--password linux \
 			--port 9091 \
 			--allowed "127.0.0.1"
-		txt="Launched Transmission\n"
+		txt="Launched Transmission"
 		echo -e "${txt}"
 	elif [ $1 = "abort" ]
 		killall transmission-daemon
-		txt="Aborted Transmission\n"
+		txt="Aborted Transmission"
 		echo -e "${txt}"
 }
 
@@ -136,5 +136,8 @@ function extract {
         fi
     fi
 }
-alias install='trin'
-alias remove='trre'
+
+alias load="trin"
+alias remove="trre"
+alias has="trlocs"
+alias aur="trreps"
