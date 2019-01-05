@@ -5,7 +5,11 @@ pyProcessColorFile=".config/i3/configColors.py"
 colorsFile="${HOME}/.config/i3/colors"
 colors=()
 
-wal -i "$img"
+if [[ -z "$1" ]]; then
+	wal -i "$img"
+else
+	wal -i "$1"
+fi;
 while read -r line || [[ -n "$line" ]]; do
 	colors+=("$line")
 done < "$walColorFile"
@@ -51,7 +55,7 @@ termStr="${termStr}\ncursor_blink = on"
 termStr="${termStr}\ncursor_shape = ibeam"
 termStr="${termStr}\npadding = 5px"
 termStr="${termStr}\nroundness = 2.0\n\n\n[colors]\n" 
-termStr="${termStr}background = rgba(63, 63, 63, 0.6)\n"
+termStr="${termStr}background = rgba(63, 63, 63, .75)\n"
 termStr="${termStr}highlight = #2f2f2f\n"
 
 for c in ${!colors[@]}; do

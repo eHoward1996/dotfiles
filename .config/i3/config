@@ -103,6 +103,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec i3-msg exit
 # lock i3 (no log out)
 bindsym $mod+Shift+l exec ~/.config/i3/lockScreen.sh
+# manually choose a theme
+bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/manualSetColorScheme.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
