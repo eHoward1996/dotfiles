@@ -1,20 +1,32 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.config/zsh/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 unsetopt autocd beep extendedglob
 bindkey -v
 
 # End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/oonebaddog/.zshrc'
+zstyle :compinstall filename '/home/oonebaddog/.config/zsh/.zshrc'
 
 autoload -Uz compinit
-compinit
+compinit -d ~/.config/zsh/zcompdump-$ZSH_VERSION
 # End of lines added by compinstall
 
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+#################################################
+#             Export some variables             #
+#################################################
+
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 #################################################
 #		PRETTY COLORS!!!		#	
@@ -34,7 +46,9 @@ POWERLEVEL9K_LINUX_ARCH_ICON=
 POWERLEVEL9K_TIME_ICON=
 
 # Antigen Config
+export ADOTDIR=$HOME/.config/antigen/info
 source $HOME/.config/antigen/antigen.zsh
+
 antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle robbyrussell/oh-my-zsh plugins/archlinux
@@ -42,11 +56,13 @@ antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle git
 antigen bundle colored-man-pages
 antigen bundle colorized
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme bhilburn/powerlevel9k powerlevel9k
 antigen apply
 
 #########################################
-#		MACROS..		#
+#		        MACROS..                #
 #########################################
 
 function wifi()	{
@@ -137,7 +153,11 @@ function extract {
     fi
 }
 
+#########################################
+#		        Aliases                 #
+#########################################
 alias load="trin"
-alias remove="trre"
+alias remove="trrem"
 alias has="trlocs"
 alias aur="trreps"
+alias progs="trlst"
