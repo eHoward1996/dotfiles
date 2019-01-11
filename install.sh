@@ -33,8 +33,8 @@ if [[ $confirm != [nN] ]]; then
     
     pwd
 
-    cp dotfiles/.config/i3 ~/.config
-    cp dotfiles/.config/polybar ~/.config
+    cp -r dotfiles/.config/i3 ~/.config
+    cp -r dotfiles/.config/polybar ~/.config
     cp dotfiles/individual_dots/.zprofile ~/.config/zsh/.zprofile
     cp dotfiles/individual_dots/.zshrc ~/.config/zsh/.zshrc
     sudo cp individual_dots/etc.issue /etc/issue
