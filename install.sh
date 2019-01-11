@@ -31,10 +31,12 @@ read -p "Continue? (Y/N): " confirm
 if [[ $confirm != [nN] ]]; then
     mkdir ~/.config
     
-    cp .config/i3 ~/.config
-    cp .config/polybar ~/.config
-    cp individual_dots/.zprofile ~/.config/zsh/.zprofile
-    cp individual_dots/.zshrc ~/.config/zsh/.zshrc
+    pwd
+    
+    cp ./.config/i3 ~/.config
+    cp ./.config/polybar ~/.config
+    cp ./individual_dots/.zprofile ~/.config/zsh/.zprofile
+    cp ./individual_dots/.zshrc ~/.config/zsh/.zshrc
     sudo cp individual_dots/etc.issue /etc/issue
 fi
 
