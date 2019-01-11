@@ -29,6 +29,8 @@ echo -e "Moving Dotfiles...."
 read -p "Continue? (Y/N): " confirm
 
 if [[ $confirm != [nN] ]]; then
+    mkdir ~/.config
+    
     cp .config/i3 ~/.config
     cp .config/polybar ~/.config
     cp individual_dots/.zprofile ~/.config/zsh/.zprofile
