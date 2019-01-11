@@ -32,11 +32,11 @@ if [[ $confirm != [nN] ]]; then
     mkdir ~/.config
     
     pwd
-    
-    cp ./.config/i3 ~/.config
-    cp ./.config/polybar ~/.config
-    cp ./individual_dots/.zprofile ~/.config/zsh/.zprofile
-    cp ./individual_dots/.zshrc ~/.config/zsh/.zshrc
+
+    cp dotfiles/.config/i3 ~/.config
+    cp dotfiles/.config/polybar ~/.config
+    cp dotfiles/individual_dots/.zprofile ~/.config/zsh/.zprofile
+    cp dotfiles/individual_dots/.zshrc ~/.config/zsh/.zshrc
     sudo cp individual_dots/etc.issue /etc/issue
 fi
 
