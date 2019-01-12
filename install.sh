@@ -30,7 +30,8 @@ read -p "Continue? (Y/N): " confirm
 
 if [[ $confirm != [nN] ]]; then
     mkdir ~/.config
-    
+    mkdir ~/.config/zsh
+
     cp -r dotfiles/.config/i3 ~/.config
     cp -r dotfiles/.config/polybar ~/.config
     cp dotfiles/individual_dots/.zprofile ~/.config/zsh/.zprofile
