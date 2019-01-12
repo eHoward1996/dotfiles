@@ -20,6 +20,8 @@ if [[ $confirm != [nN] ]]; then
         unrar \
         unzip \
         vim \
+        xorg \
+        xorg-xinit \
         zip \
         zsh
 fi
