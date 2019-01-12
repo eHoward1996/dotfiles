@@ -42,7 +42,7 @@ if [[ $confirm != [nN] ]]; then
     sudo cp dotfiles/individual_dots/etc.issue /etc/issue
 
     touch ~/.zshenv
-    echo -e "export ZDOTDIR=$HOME/.config/zsh"
+    echo -e "export ZDOTDIR=$HOME/.config/zsh" > ~/.zshenv
 fi
 
 # Use Trizen to install AUR packages.
