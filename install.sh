@@ -40,6 +40,9 @@ if [[ $confirm != [nN] ]]; then
     cp dotfiles/individual_dots/.zshrc ~/.config/zsh/.zshrc
     cp dotfiles/individual_dots/.Xresources ~/.Xresources
     sudo cp dotfiles/individual_dots/etc.issue /etc/issue
+
+    touch ~/.zshenv
+    echo -e "export ZDOTDIR=$HOME/.config/zsh"
 fi
 
 # Use Trizen to install AUR packages.
