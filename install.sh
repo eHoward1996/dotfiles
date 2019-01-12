@@ -31,8 +31,6 @@ read -p "Continue? (Y/N): " confirm
 if [[ $confirm != [nN] ]]; then
     mkdir ~/.config
     
-    pwd
-
     cp -r dotfiles/.config/i3 ~/.config
     cp -r dotfiles/.config/polybar ~/.config
     cp dotfiles/individual_dots/.zprofile ~/.config/zsh/.zprofile
@@ -63,7 +61,7 @@ read -p "Continue? (Y/N): " confirm
 
 if [[ $confirm != [nN] ]]; then
     mkdir ~/.config/antigen
-    curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
+    cp dotfiles/individual_dots/antigen.zsh ~/.config/antigen/antigen.zsh
 fi
 
 # Add programming language support? (Requires user input)
@@ -75,3 +73,10 @@ read -p "Continue? (Y/N): " confirm
 if [[ $confirm != [nN] ]]; then
     trin jdk python ruby
 fi
+
+echo -e "Moving Pictures to Home Directory"
+mkdir ~/Pictures/Wallpapers
+cp -r dotfiles/Pictures/Wallpapers ~/Pictures/Wallpapers
+
+echo -e "Moving .xinitrc"
+cp dotfiles/individual_dots/.xinitrc ~/.xinitrc
