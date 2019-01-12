@@ -26,6 +26,13 @@ if [[ $confirm != [nN] ]]; then
         zsh
 fi
 
+# Set user shell
+echo -e "Change user shell to ZSH?"
+read -p "Continue? (Y/N): " confirm
+if [[ $confirm != [nN] ]]; then
+    chsh -s /usr/bin/zsh
+fi
+
 # Move dotfiles
 echo -e "Moving Dotfiles...."
 read -p "Continue? (Y/N): " confirm
