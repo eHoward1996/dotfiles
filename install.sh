@@ -36,7 +36,7 @@ if [[ $confirm != [nN] ]]; then
     cp -r dotfiles/.config/polybar ~/.config
     cp dotfiles/individual_dots/.zprofile ~/.config/zsh/.zprofile
     cp dotfiles/individual_dots/.zshrc ~/.config/zsh/.zshrc
-    sudo cp individual_dots/etc.issue /etc/issue
+    sudo cp dotfiles/individual_dots/etc.issue /etc/issue
 fi
 
 # Use Trizen to install AUR packages.
