@@ -66,7 +66,8 @@ if [[ $confirm != [nN] ]]; then
         google-chrome \
         nerd-fonts-complete \
         polybar \
-        termite-git
+        termite-git \ 
+        feh
 fi
 
 # Add Antigen to build.
