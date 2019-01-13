@@ -40,11 +40,13 @@ read -p "Continue? (Y/N): " confirm
 if [[ $confirm != [nN] ]]; then
     mkdir ~/.config
     mkdir ~/.config/zsh
+    mkdir ~/.config/rofi
 
     cp -r dotfiles/.config/i3 ~/.config
     cp -r dotfiles/.config/polybar ~/.config
     cp dotfiles/individual_dots/.zprofile ~/.config/zsh/.zprofile
     cp dotfiles/individual_dots/.zshrc ~/.config/zsh/.zshrc
+    cp dotfiles/individual_dots/flat-orange.rasi ~/.config/rofi/flat-orange.rasi
     cp dotfiles/individual_dots/.Xresources ~/.Xresources
     sudo cp dotfiles/individual_dots/etc.issue /etc/issue
 
