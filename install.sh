@@ -93,7 +93,7 @@ fi
 
 echo -e "Moving Pictures to Home Directory"
 mkdir ~/Pictures/Wallpapers
-cp -r dotfiles/Pictures/Wallpapers ~/Pictures/Wallpapers
+cp dotfiles/Pictures/Wallpapers/* ~/Pictures/Wallpapers
 
 echo -e "Moving .xinitrc"
 cp dotfiles/individual_dots/.xinitrc ~/.xinitrc
