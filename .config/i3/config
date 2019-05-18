@@ -20,6 +20,15 @@ bindsym $mod+Shift+q kill
 # Set the background image and color scheme
 exec_always ~/.config/i3/setColorScheme.sh
 
+# Start bluetooth services
+exec_always --no-startup-id ~/.config/i3/startBluetooth.sh
+
+# Setup Monitor
+exec_always ~/.config/i3/setMonitor.sh
+
+# Execute polybar on launch. Script kills current ones on i3 refresh, otherwise they duplicate
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
 # start rofi (a program launcher)
 bindsym $mod+d exec ~/.config/i3/execRofi.sh
 
@@ -97,14 +106,21 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec i3-msg exit
+
 # lock i3 (no log out)
 bindsym $mod+Shift+l exec ~/.config/i3/lockScreen.sh
+
 # manually choose a theme
 bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/manualSetColorScheme.sh
+
+# open file manager
+bindsym $mod+e exec nemo
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -156,9 +172,6 @@ exec --no-startup-id synclient TouchpadOff=0
 exec --no-startup-id synclient TapButton1=1
 exec --no-startup-id synclient TapButton2=3
 
-# Setup Monitor
-exec_always ~/.config/i3/setMonitor.sh
-
 # Set color scheme
 set_from_resource $c0 i3wm.color0 
 set_from_resource $c1 i3wm.color1 
@@ -184,9 +197,6 @@ exec --no-startup-id sh ~/.config/i3/startupLayout.sh
 
 # Give client transitions fade effect
 exec compton -f &
-
-# Execute polybar on launch. Script kills current ones on i3 refresh, otherwise they duplicate
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # i3-gaps configuration 
 # 	Disable title bars
@@ -219,9 +229,3 @@ bindsym $mod+z mode "scrot"
 # Set screensaver time to 10 mins and startup on lock screen
 exec --no-startup-id xset dpms 600
 exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/lockScreen.sh
-
-# Check my laptop isn't stolen :)
-exec_always --no-startup-id ~/.config/i3/logIP.sh
-
-# Start bluetooth services
-exec_always --no-startup-id ~/.config/i3/startBluetooth.sh
