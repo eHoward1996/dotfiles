@@ -42,13 +42,13 @@ if [[ $confirm != [nN] ]]; then
     mkdir ~/.config/zsh
     mkdir ~/.config/rofi
 
-    cp -r dotfiles/.config/i3 ~/.config
-    cp -r dotfiles/.config/polybar ~/.config
-    cp dotfiles/individual_dots/.zprofile ~/.config/zsh/.zprofile
-    cp dotfiles/individual_dots/.zshrc ~/.config/zsh/.zshrc
-    cp dotfiles/individual_dots/flat-orange.rasi ~/.config/rofi/flat-orange.rasi
-    cp dotfiles/individual_dots/.Xresources ~/.Xresources
-    sudo cp dotfiles/individual_dots/etc.issue /etc/issue
+    cp ./.config/i3                       ~/.config
+    cp ./.config/polybar                  ~/.config
+    cp ./individual_dots/.zprofile        ~/.config/zsh/.zprofile
+    cp ./individual_dots/.zshrc           ~/.config/zsh/.zshrc
+    cp ./individual_dots/flat-orange.rasi ~/.config/rofi/flat-orange.rasi
+    cp ./individual_dots/.Xresources      ~/.Xresources
+    sudo cp ./individual_dots/etc.issue   /etc/issue
 
     touch ~/.zshenv
     echo -e "export ZDOTDIR=$HOME/.config/zsh" > ~/.zshenv
@@ -68,8 +68,14 @@ if [[ $confirm != [nN] ]]; then
         google-chrome \
         nerd-fonts-complete \
         polybar \
-        termite-git \ 
-        feh
+        termite-git \
+        feh \
+        nemo \
+        visual-studio-code-bin \
+        ttf-fira-code \
+        otf-fira-code 
+    
+    mkdir ~/.config/termite && touch ~/.config/termite/config
 fi
 
 # Add Antigen to build.

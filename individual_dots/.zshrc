@@ -91,22 +91,28 @@ function wifi()	{
 			nmcli device wifi
 			;;
 		"connect")
-			echo -e "Additional credentials needed."
+			nmcli device wifi
 			echo -e "Enter the network name"
 			read name
 			echo -e "Enter network password"
 			read passwd
 
+			if [[ ! $passwd ]]; then
+				nmcli device wifi connect $name
+			else
 			nmcli device wifi connect $name password $passwd
+			fi
 			;;
 		*) echo "What is this?"
 			;;
 	esac
-			
+
+	source ~/.config/i3/logIP.sh			
 }
 
 function transmissionctrl()	{
 	if [ $1 = "launch"  ] || [ $1 = "start" ]; then
+		nordvpn connect United_Kingdom
 		transmission-daemon \
 			--auth \
 			--username arch \
@@ -117,6 +123,7 @@ function transmissionctrl()	{
 		echo -e "${txt}"
 	elif [ $1 = "abort" ]
 		killall transmission-daemon
+		nordvpn disconnect
 		txt="Aborted Transmission"
 		echo -e "${txt}"
 }
@@ -153,6 +160,14 @@ function extract {
     fi
 }
 
+function yt2mp3	{
+	(
+		cd ~/Programs/'Python Programs'
+		python youtube_dl.py $1
+	)
+}
+
+
 #########################################
 #		        Aliases                 #
 #########################################
@@ -161,3 +176,4 @@ alias remove="trrem"
 alias has="trlocs"
 alias aur="trreps"
 alias progs="trlst"
+alias vpn="nordvpn"

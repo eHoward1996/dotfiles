@@ -1,7 +1,7 @@
 img="${HOME}/Pictures/Wallpapers/"
 walSelectedImg="`cat ${HOME}/.cache/wal/wal`"
 walColorFile="${HOME}/.cache/wal/colors"
-pyProcessColorFile=".config/i3/configColors.py"
+pyProcessColorFile="${HOME}/.config/i3/configColors.py"
 colorsFile="${HOME}/.config/i3/colors"
 colors=()
 
@@ -14,7 +14,7 @@ while read -r line || [[ -n "$line" ]]; do
 	colors+=("$line")
 done < "$walColorFile"
 
-colors=( $(python "$HOME/$pyProcessColorFile" ${colors[*]}) )
+colors=( $(python "$pyProcessColorFile" ${colors[*]}) )
 colorStr=""
 
 if [ ! -f $colorsFile ]; then
