@@ -46,7 +46,7 @@ For my build you need the following packages
 * pywal (formerly 'wal')
 * arandr
 
-If you are on Arch Linux (Hint: You should be) you can run:
+If you are on Arch Linux you can run:
 `pacaur -S i3blocks i3-gaps i3-wm polybar rofi nerd-fonts-complete scrot google-chrome-stable termite pywal arandr`
 
 That should install most (if not all necessary packages)
@@ -54,4 +54,3 @@ That should install most (if not all necessary packages)
 ## TODOs
 
 1. Add and/or create makefile or install.sh
-2. Use vim more

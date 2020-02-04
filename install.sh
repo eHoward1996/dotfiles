@@ -1,9 +1,6 @@
 # Install basic packages.
-echo -e "Build basic packages...."
-read -p "Continue? (Y/N): " confirm
-
-if [[ $confirm != [nN] ]]; then
-    sudo pacman -S \
+echo -e "Building packages...."
+sudo pacman -S \
         arandr \
         bash-completion \
         curl \
@@ -24,82 +21,75 @@ if [[ $confirm != [nN] ]]; then
         xorg-xinit \
         zip \
         zsh
-fi
 
 # Set user shell
-echo -e "Change user shell to ZSH?"
-read -p "Continue? (Y/N): " confirm
-if [[ $confirm != [nN] ]]; then
-    chsh -s /usr/bin/zsh
-fi
+echo -e "Changing user shell to ZSH"
+chsh -s /usr/bin/zsh
 
 # Move dotfiles
 echo -e "Moving Dotfiles...."
-read -p "Continue? (Y/N): " confirm
+mkdir ~/.config
+mkdir ~/.config/zsh
+mkdir ~/.config/rofi
 
-if [[ $confirm != [nN] ]]; then
-    mkdir ~/.config
-    mkdir ~/.config/zsh
-    mkdir ~/.config/rofi
+yes | cp -rf ./.config/i3                       ~/.config
+yes | cp -rf ./.config/polybar                  ~/.config
+yes | cp -rf ./individual_dots/.zprofile        ~/.config/zsh/.zprofile
+yes | cp -rf ./individual_dots/.zshrc           ~/.config/zsh/.zshrc
+yes | cp -rf ./individual_dots/base.rasi        ~/.config/rofi/base.rasi
+yes | cp -rf ./individual_dots/.Xresources      ~/.Xresources
+yes | sudo cp -rf ./individual_dots/etc.issue   /etc/issue
 
-    cp ./.config/i3                       ~/.config
-    cp ./.config/polybar                  ~/.config
-    cp ./individual_dots/.zprofile        ~/.config/zsh/.zprofile
-    cp ./individual_dots/.zshrc           ~/.config/zsh/.zshrc
-    cp ./individual_dots/flat-orange.rasi ~/.config/rofi/flat-orange.rasi
-    cp ./individual_dots/.Xresources      ~/.Xresources
-    sudo cp ./individual_dots/etc.issue   /etc/issue
-
-    touch ~/.zshenv
-    echo -e "export ZDOTDIR=$HOME/.config/zsh" > ~/.zshenv
-fi
+touch ~/.zshenv
+echo -e "export ZDOTDIR=$HOME/.config/zsh" > ~/.zshenv
 
 # Use Trizen to install AUR packages.
-echo -e "Build Trizen for AUR support...."
-read -p "Continue? (Y/N): " confirm
+echo -e "Using Trizen for AUR support...."
+cd ~/.config
+mkdir trizen
+git clone https://aur.archlinux.org/trizen.git
+cd trizen
+makepkg -si
+cd ..
 
-if [[ $confirm != [nN] ]]; then
-    git clone https://aur.archlinux.org/trizen.git
-    cd trizen
-    makepkg -si
-    cd ..
-    trizen -S \
-        compton \
-        google-chrome \
-        nerd-fonts-complete \
-        polybar \
-        termite-git \
-        feh \
-        nemo \
-        visual-studio-code-bin \
-        ttf-fira-code \
-        otf-fira-code 
+trizen -S \
+    compton \
+    google-chrome \
+    nerd-fonts-complete \
+    polybar \
+    termite-git \
+    feh \
+    nemo \
+    visual-studio-code-bin \
+    ttf-fira-code \
+    otf-fira-code \
+    nordvpn-bin \
+    transmission-cli \
+    firefox \
+    visual-studio-code-bin \
+    ttf-ms-fonts \
     
-    mkdir ~/.config/termite && touch ~/.config/termite/config
-fi
+    
+systemctl enable nordvpnd.service
+systemctl start nordvpnd.service
+
+mkdir ~/.config/termite && touch ~/.config/termite/config
 
 # Add Antigen to build.
-echo -e "Build Antigen for added ZSH support...."
-read -p "Continue? (Y/N): " confirm
-
-if [[ $confirm != [nN] ]]; then
-    mkdir ~/.config/antigen
-    cp dotfiles/individual_dots/antigen.zsh ~/.config/antigen/antigen.zsh
-fi
+echo -e "Adding Antigen for added ZSH support...."
+mkdir ~/.config/antigen
+touch ~/.config/antigen/antigen.zsh
+cp dotfiles/individual_dots/antigen.zsh ~/.config/antigen/antigen.zsh
 
 # Add programming language support? (Requires user input)
-echo -e "Add programming language support?"
-echo -e "Languages to be installed:\n"
-echo -e "\t-Python 3\n\t-Ruby\n\t-Java (JDK)\n"
-read -p "Continue? (Y/N): " confirm
-
-if [[ $confirm != [nN] ]]; then
-    trin jdk python ruby
-fi
+echo -e "Installing programming languages (Java, Python 3, Ruby)..."
+trin jdk python ruby
 
 echo -e "Moving Pictures to Home Directory"
+mkdir ~/Pictures
 mkdir ~/Pictures/Wallpapers
 cp dotfiles/Pictures/Wallpapers/* ~/Pictures/Wallpapers
 
 echo -e "Moving .xinitrc"
+touch ~/.xinitrc
 cp dotfiles/individual_dots/.xinitrc ~/.xinitrc

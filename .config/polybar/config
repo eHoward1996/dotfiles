@@ -19,22 +19,26 @@ secondary = ${xrdb:color4:#e60053}
 alert = ${xrdb:color1:#bd2c40}
 
 [bar/bar]
-monitor = eDP-1
-width = 100%
-height = 30
-
-;fixed-center = true
+monitor = eDP1
+width = 95%
+height = 50
+radius = 5.0
 
 background = ${colors.background}
 foreground = ${colors.color2}
 
-line-size = 3
+fixed-center = true
+line-size = 4
 line-color = #f00
-border-size = 1
+border-bottom-size = 25
+border-left-size = 90
 border-color = #00000000
 padding = 0
 
-font-0 = SauceCodePro Nerd Font:style=Regular:size=10;1
+font-0 = "SauceCodePro Nerd Font:style=Regular:size=12;0"
+font-1 = "SauceCodePro Nerd Font:style=Bold:size=12;0"
+font-3 = "SauceCodePro Nerd Font:style=Regular:size=14;0"
+font-2 = "SauceCodePro Nerd Font:style=Bold:size=14;0"
 
 modules-left = i3
 modules-center = powermenu
@@ -65,11 +69,13 @@ label-focused = %index%%icon%
 label-focused-background = ${self.label-mode-background}
 label-focused-underline = ${colors.color1}
 label-focused-padding = 2
+label-focused-font = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-background = ${self.label-mode-background}
 label-unfocused-padding = 2
+label-unfocused-font = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -118,6 +124,7 @@ interface = wlp1s0
 
 format-connected = <label-connected> (<ramp-signal>)
 label-connected = " %essid%" 
+label-active-font = 1
 format-connected-underline = ${colors.color5}
 label-connected-foreground = ${colors.color6}
 
@@ -146,12 +153,12 @@ label-muted = sound muted
 
 bar-volume-width = 10
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
+bar-volume-indicator-font = 4
 bar-volume-fill = ─
 bar-volume-fill-foreground = ${colors.color4}
-bar-volume-fill-font = 2
+bar-volume-fill-font = 4
 bar-volume-empty = ─
-bar-volume-empty-font = 2
+bar-volume-empty-font = 4
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
@@ -201,12 +208,12 @@ format-underline = ${colors.color2}
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #ff
-bar-indicator-font = 2
+bar-indicator-font = 1
 bar-fill = ─
-bar-fill-font = 2
+bar-fill-font = 1
 bar-fill-foreground = ${colors.color1}
 bar-empty = ─
-bar-empty-font = 2
+bar-empty-font = 1
 bar-empty-foreground = ${colors.foreground-alt}
 bar-background = #000
 

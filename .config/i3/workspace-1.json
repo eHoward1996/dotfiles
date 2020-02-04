@@ -1,5 +1,6 @@
+// vim:ts=4:sw=4:et
 {
-    // splitv split container with 2 children
+    // splitv split container with 1 children
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
@@ -16,30 +17,13 @@
                "x": 0,
                "y": 0
             },
-            "name": "oonebaddog@TheMatrix: ~",
-            "percent": 0.5,
+            "name": "",
+            "percent": 1,
             "swallows": [
                {
-                    "class": "^Termite$"
-               }
-            ],
-            "type": "con"
-        },
-        {
-            "border": "pixel",
-            "current_border_width": 2,
-            "floating": "auto_off",
-            "geometry": {
-               "height": 458,
-               "width": 734,
-               "x": 0,
-               "y": 0
-            },
-            "name": "oonebaddog@TheMatrix: ~",
-            "percent": 0.5,
-            "swallows": [
-               {
-		       "class": "^Termite$"
+               // "class": "^Termite$",
+               // "instance": "^termite$",
+               // "title": "^i3\\-save\\-tree\\ \\-\\-workspace\\ 1\\ \\>\\ $"
                }
             ],
             "type": "con"
@@ -49,19 +33,21 @@
 
 {
     "border": "pixel",
-    "current_border_width": 2,
+    "current_border_width": 0,
     "floating": "auto_off",
     "geometry": {
-       "height": 1010,
-       "width": 1882,
-       "x": 29,
-       "y": 29
+       "height": 971,
+       "width": 1886,
+       "x": 17,
+       "y": 17
     },
-    "name": "New Tab - Google Chrome",
+    "name": "Speed Dial - Opera",
     "percent": 0.5,
     "swallows": [
        {
-            "class": "^Google\\-chrome$"
+       // "class": "^Opera$",
+       // "instance": "^Opera$",
+       // "title": "^Speed\\ Dial\\ \\-\\ Opera$"
        }
     ],
     "type": "con"

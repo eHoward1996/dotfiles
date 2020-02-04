@@ -29,7 +29,7 @@ export XDG_DATA_HOME="$HOME"/.local/share
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 #################################################
-#		PRETTY COLORS!!!		#	
+#		         PRETTY COLORS!!!	       	    #	
 #################################################
 
 # Import colorscheme from 'wal' asynchronously

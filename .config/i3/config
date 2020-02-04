@@ -206,13 +206,13 @@ gaps outer 3
 
 # Set program specific settings
 for_window [class="Termite"] border pixel 2
-for_window [class="Termite"] resize set 930 500
+# for_window [class="Termite"] resize set 930 500
 
 for_window [class="Google-chrome"] border pixel 2
-for_window [class="Google-chrome"] resize set 930 1020
+# for_window [class="Google-chrome"] resize set 930 1020
 
 for_window [class="Code"] border pixel 2
-for_window [class="Code"] resize set 1890 1020
+# for_window [class="Code"] resize set 1890 1020
 
 # Set binding for screenshotting
 mode "scrot"	{
